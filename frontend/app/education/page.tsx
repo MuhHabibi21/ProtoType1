@@ -18,37 +18,43 @@ const EDUCATION_CARDS = [
     icon: '📰',
     title: 'Mengenali Hoaks',
     desc: 'Hoaks biasanya pakai judul sensasional, sumber tidak jelas, dan memancing emosi. Selalu cek sumber sebelum share!',
-    color: 'border-red-800',
+    bgColor: 'bg-neo-red/10',
+    borderColor: 'border-neo-red',
   },
   {
     icon: '🎭',
     title: 'Bahaya Deepfake',
     desc: 'Deepfake adalah video/foto palsu yang dibuat AI. Ciri-cirinya: gerakan tidak natural, tepi wajah blur, dan pencahayaan aneh.',
-    color: 'border-purple-800',
+    bgColor: 'bg-neo-purple/10',
+    borderColor: 'border-neo-purple',
   },
   {
     icon: '🔐',
     title: 'Keamanan Password',
     desc: 'Password kuat minimal 12 karakter, campuran huruf besar-kecil, angka, dan simbol. Jangan pakai tanggal lahir!',
-    color: 'border-blue-800',
+    bgColor: 'bg-neo-blue/10',
+    borderColor: 'border-neo-blue',
   },
   {
     icon: '🎣',
     title: 'Waspada Phishing',
     desc: 'Phishing adalah penipuan yang menyamar jadi instansi resmi. Cek URL dengan teliti — jangan klik link mencurigakan!',
-    color: 'border-yellow-800',
+    bgColor: 'bg-neo-yellow/20',
+    borderColor: 'border-neo-yellow',
   },
   {
     icon: '📱',
     title: 'Aman di Media Sosial',
     desc: 'Aktifkan 2FA, jangan share info pribadi sembarangan, dan waspada akun palsu yang meminta data sensitif.',
-    color: 'border-green-800',
+    bgColor: 'bg-neo-green/10',
+    borderColor: 'border-neo-green',
   },
   {
     icon: '💬',
     title: 'Scam via Chat',
     desc: 'Scammer sering pura-pura jadi orang dikenal. Waspada jika ada yang minta transfer uang atau kode OTP lewat chat!',
-    color: 'border-orange-800',
+    bgColor: 'bg-neo-orange/10',
+    borderColor: 'border-neo-orange',
   },
 ]
 
@@ -111,17 +117,21 @@ export default function EducationPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
+    <main className="min-h-screen text-black pb-12">
 
       {/* Navbar */}
-      <nav className="border-b border-gray-800 px-6 py-4">
+      <nav className="border-b-4 border-black bg-white px-6 py-4 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-red-500 font-bold text-lg">
+          <Link href="/" className="bg-neo-red text-white border-2 border-black px-3 py-1 font-black text-sm uppercase tracking-wider transform -rotate-1 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             🛡️ Nusantara Defense AI
           </Link>
-          <div className="flex gap-4 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition">🔍 Detektor</Link>
-            <Link href="/education" className="text-white font-medium border-b border-red-500 pb-0.5">📚 Edukasi</Link>
+          <div className="flex gap-4 text-xs font-black uppercase">
+            <Link href="/" className="bg-white text-black border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all hover:bg-neutral-100">
+              🔍 Detektor
+            </Link>
+            <Link href="/education" className="bg-neo-yellow text-black border-2 border-black px-3 py-1.5 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all">
+              📚 Edukasi
+            </Link>
           </div>
         </div>
       </nav>
@@ -129,46 +139,59 @@ export default function EducationPage() {
       <div className="max-w-5xl mx-auto px-6 py-8">
 
         {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-white mb-2">📚 Education Hub</h1>
-          <p className="text-gray-400 text-sm">Tingkatkan literasi digitalmu — kenali ancaman siber sebelum jadi korban</p>
+        <div className="mb-10 text-center">
+          <div className="inline-block bg-neo-yellow border-4 border-black px-6 py-4 transform rotate-1 shadow-[6px_6px_0px_rgba(0,0,0,1)]">
+            <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight leading-none uppercase">
+              📚 Education Hub
+            </h1>
+          </div>
+          <div className="mt-4">
+            <p className="bg-white border-2 border-black inline-block text-black font-extrabold uppercase px-4 py-1 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)]">
+              Tingkatkan literasi digitalmu — kenali ancaman siber sebelum jadi korban
+            </p>
+          </div>
         </div>
 
         {/* Education Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {EDUCATION_CARDS.map((card, i) => (
-            <div key={i} className={`bg-gray-900 rounded-xl p-5 border ${card.color} hover:scale-105 transition-transform cursor-default`}>
-              <p className="text-2xl mb-2">{card.icon}</p>
-              <h3 className="font-semibold text-white mb-1">{card.title}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">{card.desc}</p>
+            <div key={i} className={`${card.bgColor} border-3 border-black p-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 duration-200 cursor-default`}>
+              <p className="text-3xl mb-3">{card.icon}</p>
+              <h3 className="font-black text-black uppercase text-sm mb-2">{card.title}</h3>
+              <p className="text-neutral-700 font-bold text-[11px] leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Chatbot Section */}
-        <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+        <div className="bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] overflow-hidden">
 
           {/* Chat Header */}
-          <div className="px-5 py-4 border-b border-gray-800 flex items-center gap-3">
-            <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-sm">🤖</div>
-            <div>
-              <p className="font-medium text-sm">Nusantara AI Guard</p>
-              <p className="text-xs text-green-400">● Online</p>
+          <div className="px-5 py-4 border-b-4 border-black bg-neo-yellow flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-black text-white border-2 border-black rounded-none flex items-center justify-center font-black text-sm">🤖</div>
+              <div>
+                <p className="font-black text-sm uppercase text-black">Nusantara AI Guard</p>
+                <p className="text-[10px] text-green-700 font-extrabold uppercase tracking-wider">● Online</p>
+              </div>
             </div>
+            <span className="bg-white text-black text-xs font-black uppercase px-2 py-0.5 border-2 border-black shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)]">
+              🛡️ Asisten Siber
+            </span>
           </div>
 
           {/* Chat Messages */}
-          <div className="h-96 overflow-y-auto p-5 space-y-4">
+          <div className="h-96 overflow-y-auto p-5 space-y-4 bg-amber-50/5">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.role === 'assistant' && (
-                  <div className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-xs mr-2 mt-1 flex-shrink-0">🤖</div>
+                  <div className="w-7 h-7 bg-black text-white rounded-none flex items-center justify-center text-xs mr-2 mt-1 flex-shrink-0 font-bold border border-black shadow-[1px_1px_0px_rgba(0,0,0,1)]">🤖</div>
                 )}
                 <div
-                  className={`max-w-xs md:max-w-md rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                  className={`max-w-xs md:max-w-md px-4 py-3 text-xs leading-relaxed border-2 border-black font-semibold shadow-[2px_2px_0px_rgba(0,0,0,1)] ${
                     msg.role === 'user'
-                      ? 'bg-red-600 text-white rounded-tr-sm'
-                      : 'bg-gray-800 text-gray-200 rounded-tl-sm'
+                      ? 'bg-neo-red text-white'
+                      : 'bg-white text-black'
                   }`}
                   dangerouslySetInnerHTML={{ __html: formatMessage(msg.content) }}
                 />
@@ -178,12 +201,12 @@ export default function EducationPage() {
             {/* Loading bubble */}
             {loading && (
               <div className="flex justify-start">
-                <div className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-xs mr-2 mt-1">🤖</div>
-                <div className="bg-gray-800 rounded-2xl rounded-tl-sm px-4 py-3">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="w-7 h-7 bg-black text-white rounded-none flex items-center justify-center text-xs mr-2 mt-1 font-bold border border-black">🤖</div>
+                <div className="bg-white border-2 border-black px-4 py-3 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                  <div className="flex gap-1.5 items-center">
+                    <span className="w-2.5 h-2.5 bg-black rounded-none animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2.5 h-2.5 bg-black rounded-none animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2.5 h-2.5 bg-black rounded-none animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>
@@ -193,14 +216,14 @@ export default function EducationPage() {
 
           {/* Quick Reply Buttons */}
           {!quickRepliesUsed && (
-            <div className="px-5 py-3 border-t border-gray-800">
-              <p className="text-xs text-gray-500 mb-3">Pilih topik atau ketik pertanyaanmu:</p>
-              <div className="flex flex-wrap gap-2">
+            <div className="px-5 py-4 border-t-3 border-black bg-neutral-50/50">
+              <p className="text-[10px] font-black uppercase text-neutral-500 mb-3">Pilih topik cepat:</p>
+              <div className="flex flex-wrap gap-2.5">
                 {QUICK_REPLIES.map((qr, i) => (
                   <button
                     key={i}
                     onClick={() => sendMessage(qr.text)}
-                    className="flex items-center gap-1.5 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-red-600 text-gray-300 text-xs px-3 py-2 rounded-full transition"
+                    className="flex items-center gap-1.5 bg-white hover:bg-neutral-100 border-2 border-black text-black font-bold text-xs px-3 py-2 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3.5px_3.5px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_rgba(0,0,0,1)] transition-all cursor-pointer"
                   >
                     <span>{qr.icon}</span>
                     <span>{qr.text}</span>
@@ -211,21 +234,26 @@ export default function EducationPage() {
           )}
 
           {/* Chat Input */}
-          <div className="px-5 py-4 border-t border-gray-800">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                className="flex-1 bg-gray-800 text-white text-sm rounded-xl px-4 py-3 border border-gray-700 focus:outline-none focus:border-red-500 placeholder-gray-500"
+          <div className="px-5 py-4 border-t-4 border-black bg-white">
+            <div className="flex gap-3">
+              <textarea
+                className="flex-1 bg-white text-black text-xs font-semibold px-4 py-3.5 border-2 border-black focus:outline-none focus:bg-amber-50/10 placeholder-neutral-500 resize-none min-h-[44px] max-h-[120px]"
                 placeholder="Ketik pertanyaanmu tentang keamanan digital..."
+                rows={1}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && sendMessage(input)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault()
+                    sendMessage(input)
+                  }
+                }}
                 disabled={loading}
               />
               <button
                 onClick={() => sendMessage(input)}
                 disabled={loading || !input.trim()}
-                className="bg-red-600 hover:bg-red-700 disabled:bg-gray-700 disabled:text-gray-500 text-white px-4 py-3 rounded-xl transition font-medium text-sm"
+                className="bg-neo-green text-black border-2 border-black px-5 py-3 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4.5px_4.5px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_rgba(0,0,0,1)] transition-all font-black text-xs uppercase disabled:bg-neutral-200 disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0 disabled:text-neutral-500 cursor-pointer"
               >
                 Kirim
               </button>
@@ -233,9 +261,9 @@ export default function EducationPage() {
             {quickRepliesUsed && (
               <button
                 onClick={() => setQuickRepliesUsed(false)}
-                className="mt-2 text-xs text-gray-600 hover:text-gray-400 transition"
+                className="mt-3 text-xs text-neutral-500 font-extrabold uppercase hover:text-black transition"
               >
-                Tampilkan pertanyaan populer lagi
+                Tampilkan pertanyaan populer kembali
               </button>
             )}
           </div>
